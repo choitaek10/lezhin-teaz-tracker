@@ -8,11 +8,11 @@ on:
         type: boolean
         default: false
   schedule:
-    # Korea is UTC+9 year-round: 07:00 KST = 22:00 UTC on the previous day.
-    - cron: "0 22 * * *"
-    # Catch up at 07:17, 07:37, 08:07 and 09:07 KST if the first run was delayed or failed.
-    - cron: "17,37 22 * * *"
-    - cron: "7 23,0 * * *"
+    # Korea is UTC+9 year-round: 10:00 KST = 01:00 UTC on the same day.
+    - cron: "0 1 * * *"
+    # Catch up at 10:17, 10:37, 11:07 and 12:07 KST if the first run was delayed or failed.
+    - cron: "17,37 1 * * *"
+    - cron: "7 2,3 * * *"
 
 permissions:
   contents: write

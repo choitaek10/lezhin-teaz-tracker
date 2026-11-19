@@ -217,7 +217,7 @@ function renderModel(rowsData, hasPrevious) {
   document.getElementById("model-note").textContent = MODEL_COPY[modelMode];
   const root = document.getElementById("model-chart");
   if (modelMode === "recent" && !hasPrevious) {
-    root.innerHTML = '<p class="empty-chart">서로 다른 날짜에 두 번 수집되면(다음 07:00 KST 수집 이후) 표시됩니다.</p>';
+    root.innerHTML = '<p class="empty-chart">서로 다른 날짜에 두 번 수집되면(다음 10:00 KST 수집 이후) 표시됩니다.</p>';
     return;
   }
   const pick = {
@@ -264,9 +264,9 @@ function renderTable(rowsData) {
 /* ---------- page ---------- */
 
 function statusLabel(latest, now = new Date()) {
-  const morning = new Date(`${dayKey(now)}T07:00:00+09:00`);
+  const morning = new Date(`${dayKey(now)}T10:00:00+09:00`);
   const pending = now >= morning && dateOf(latest) < morning;
-  return `최종 수집 ${latest.captured_kst} · 매일 07:00 KST 예약${pending ? " · 오늘 수집 대기·지연 중" : ""} · 화면은 1분마다 갱신`;
+  return `최종 수집 ${latest.captured_kst} · 매일 10:00 KST 예약${pending ? " · 오늘 수집 대기·지연 중" : ""} · 화면은 1분마다 갱신`;
 }
 
 function render() {
@@ -283,7 +283,7 @@ function render() {
   document.getElementById("metric-like-growth").textContent = recent ? signed(recent.like) : "대기";
   document.getElementById("metric-window").textContent = `${daily.length}일`;
   document.querySelectorAll(".comparison-time").forEach((el) => {
-    el.textContent = previous ? `${previous.captured_kst} 대비` : "내일 07:00 수집 후 비교";
+    el.textContent = previous ? `${previous.captured_kst} 대비` : "다음 10:00 수집 후 비교";
   });
 
   const tail = daily.slice(-31);

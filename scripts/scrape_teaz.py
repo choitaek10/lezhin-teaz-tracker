@@ -27,6 +27,7 @@ LIST_URL = API_BASE + "/chat/rooms?limit=50&sort=newest"
 KST = timezone(timedelta(hours=9), "KST")
 USER_AGENT = "TeazCounter/1.0 (public-counter-research; one-daily-capture)"
 MIN_ITEMS = 5
+CAPTURE_HOUR_KST = 10  # daily capture target; keep in sync with .github/workflows/scrape.yml
 MAX_PAGES = 20
 
 
@@ -128,8 +129,8 @@ def valid_snapshot(snapshot: dict[str, Any]) -> bool:
 
 
 def capture_due(history: dict[str, Any], now: datetime) -> bool:
-    """Keep the first valid capture after 07:00 KST, even if cron runs late."""
-    morning = now.astimezone(KST).replace(hour=7, minute=0, second=0, microsecond=0)
+    """Keep the first valid capture after 10:00 KST, even if cron runs late."""
+    morning = now.astimezone(KST).replace(hour=CAPTURE_HOUR_KST, minute=0, second=0, microsecond=0)
     if now < morning:
         return False
     for snapshot in history["snapshots"]:
@@ -166,12 +167,12 @@ def write_history(history: dict[str, Any], items: list[dict[str, Any]], *, now: 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--force", action="store_true", help="Capture now even before 07:00 KST or after today's capture")
+    parser.add_argument("--force", action="store_true", help="Capture now even before 10:00 KST or after today's capture")
     args = parser.parse_args(argv)
     try:
         history = load_history()
         if not args.force and not capture_due(history, datetime.now(timezone.utc)):
-            print("Teaz capture skipped: before 07:00 KST or today's morning snapshot already exists.")
+            print("Teaz capture skipped: before 10:00 KST or today's morning snapshot already exists.")
             return 0
         snapshot = write_history(history, capture_items())
     except Exception as error:  # keep existing data on any failure

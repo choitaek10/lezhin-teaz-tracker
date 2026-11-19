@@ -52,22 +52,22 @@ class RoomItemTests(unittest.TestCase):
 
 class ScheduleTests(unittest.TestCase):
     def test_not_due_before_morning(self):
-        now = datetime(2026, 11, 19, 21, 0, tzinfo=timezone.utc)  # 06:00 KST 11/20
+        now = datetime(2026, 11, 20, 0, 30, tzinfo=timezone.utc)  # 09:30 KST 11/20
         self.assertFalse(st.capture_due({"snapshots": []}, now))
 
     def test_due_after_morning_without_capture(self):
-        now = datetime(2026, 11, 19, 23, 0, tzinfo=timezone.utc)  # 08:00 KST
-        history = {"snapshots": [snapshot("2026-11-19T16:00:00Z")]}  # 01:00 KST, before 07:00
+        now = datetime(2026, 11, 20, 2, 0, tzinfo=timezone.utc)  # 11:00 KST
+        history = {"snapshots": [snapshot("2026-11-19T22:05:00Z")]}  # 07:05 KST, before 10:00
         self.assertTrue(st.capture_due(history, now))
 
     def test_not_due_when_morning_capture_exists(self):
-        now = datetime(2026, 11, 19, 23, 30, tzinfo=timezone.utc)
-        history = {"snapshots": [snapshot("2026-11-19T22:05:00Z")]}
+        now = datetime(2026, 11, 20, 1, 30, tzinfo=timezone.utc)  # 10:30 KST
+        history = {"snapshots": [snapshot("2026-11-20T01:05:00Z")]}  # 10:05 KST
         self.assertFalse(st.capture_due(history, now))
 
     def test_invalid_morning_capture_does_not_block(self):
-        now = datetime(2026, 11, 19, 23, 30, tzinfo=timezone.utc)
-        history = {"snapshots": [snapshot("2026-11-19T22:05:00Z", n=2)]}
+        now = datetime(2026, 11, 20, 1, 30, tzinfo=timezone.utc)
+        history = {"snapshots": [snapshot("2026-11-20T01:05:00Z", n=2)]}
         self.assertTrue(st.capture_due(history, now))
 
 
