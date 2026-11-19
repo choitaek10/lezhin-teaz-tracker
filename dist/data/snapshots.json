@@ -4,15 +4,15 @@
   "source_url": "https://myteaz.io/ko",
   "snapshots": [
     {
-      "captured_at": "2026-11-19T13:01:13.805596Z",
-      "captured_kst": "2026-11-19 22:01 KST",
+      "captured_at": "2026-11-19T13:50:50.400786Z",
+      "captured_kst": "2026-11-19 22:50 KST",
       "items": [
         {
           "key": "room:um43OIUe",
           "id": "um43OIUe",
           "name": "권희서",
           "url": "https://myteaz.io/ko/chat/r/um43OIUe",
-          "message_count": 36428,
+          "message_count": 36457,
           "like_count": 129,
           "created_at": "2026-07-20T07:07:40.112Z",
           "tags": [
@@ -33,7 +33,7 @@
           "id": "Q5lW2owD",
           "name": "구윤원",
           "url": "https://myteaz.io/ko/chat/r/Q5lW2owD",
-          "message_count": 31271,
+          "message_count": 31281,
           "like_count": 148,
           "created_at": "2026-07-29T12:14:17.134Z",
           "tags": [
@@ -56,7 +56,7 @@
           "id": "evMkUebE",
           "name": "차태경",
           "url": "https://myteaz.io/ko/chat/r/evMkUebE",
-          "message_count": 26985,
+          "message_count": 27000,
           "like_count": 121,
           "created_at": "2026-07-20T07:07:45.921Z",
           "tags": [
@@ -77,7 +77,7 @@
           "id": "XviX089X",
           "name": "애런 헌터",
           "url": "https://myteaz.io/ko/chat/r/XviX089X",
-          "message_count": 12651,
+          "message_count": 12689,
           "like_count": 98,
           "created_at": "2026-07-13T00:52:04.211Z",
           "tags": [
@@ -98,7 +98,7 @@
           "id": "AgNHddov",
           "name": "강혜영",
           "url": "https://myteaz.io/ko/chat/r/AgNHddov",
-          "message_count": 11410,
+          "message_count": 11476,
           "like_count": 90,
           "created_at": "2026-07-14T01:15:01.494Z",
           "tags": [
@@ -121,7 +121,7 @@
           "id": "gPjmW6NH",
           "name": "한제원",
           "url": "https://myteaz.io/ko/chat/r/gPjmW6NH",
-          "message_count": 9431,
+          "message_count": 9465,
           "like_count": 25,
           "created_at": "2026-08-26T13:38:52.534Z",
           "tags": [
@@ -142,7 +142,7 @@
           "id": "8u3GHrKt",
           "name": "원요일",
           "url": "https://myteaz.io/ko/chat/r/8u3GHrKt",
-          "message_count": 6203,
+          "message_count": 6210,
           "like_count": 73,
           "created_at": "2026-07-29T12:14:17.134Z",
           "tags": [
@@ -186,7 +186,7 @@
           "id": "AE7ONdO9",
           "name": "차은주",
           "url": "https://myteaz.io/ko/chat/r/AE7ONdO9",
-          "message_count": 4431,
+          "message_count": 4444,
           "like_count": 39,
           "created_at": "2026-07-14T01:14:57.644Z",
           "tags": [
@@ -209,8 +209,8 @@
           "id": "CvvBO3sO",
           "name": "유진 하트",
           "url": "https://myteaz.io/ko/chat/r/CvvBO3sO",
-          "message_count": 3733,
-          "like_count": 74,
+          "message_count": 3736,
+          "like_count": 75,
           "created_at": "2026-07-13T00:52:11.809Z",
           "tags": [
             "계약관계",
@@ -230,7 +230,7 @@
           "id": "uwYwF86t",
           "name": "엘로이즈",
           "url": "https://myteaz.io/ko/chat/r/uwYwF86t",
-          "message_count": 1355,
+          "message_count": 1375,
           "like_count": 14,
           "created_at": "2026-07-17T12:43:48.402Z",
           "tags": [
@@ -251,7 +251,7 @@
           "id": "X5wAklw4",
           "name": "리처드 3세",
           "url": "https://myteaz.io/ko/chat/r/X5wAklw4",
-          "message_count": 1248,
+          "message_count": 1251,
           "like_count": 8,
           "created_at": "2026-07-20T03:09:20.897Z",
           "tags": [
@@ -420,11 +420,11 @@
         }
       ],
       "totals": {
-        "message_count": 153727,
-        "like_count": 911,
+        "message_count": 153965,
+        "like_count": 912,
         "observed_items": 19
       }
     }
   ],
-  "updated_at": "2026-11-19T13:01:13.805596Z"
+  "updated_at": "2026-11-19T13:50:50.400786Z"
 }
