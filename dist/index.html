@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="레진엔터테인먼트 AI 캐릭터챗 티즈(Teaz)의 공개 메시지·좋아요 카운터 일별 순증을 추적하는 리서치 대시보드" />
+    <meta name="theme-color" content="#0b0b1a" />
+    <title>레진 티즈 카운터</title>
+    <link rel="stylesheet" href="./styles.css?v=20261119" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">PUBLIC COUNTER MONITOR · LEZHIN TEAZ</p>
+          <h1>레진 티즈 카운터</h1>
+        </div>
+        <a class="source-link" href="https://myteaz.io/ko" target="_blank" rel="noreferrer">원본 보기 <span aria-hidden="true">↗</span></a>
+      </header>
+
+      <section id="status" class="status" aria-live="polite">데이터를 불러오는 중…</section>
+
+      <section class="metric-grid" aria-label="핵심 지표">
+        <article class="metric-card"><span>추적 작품</span><strong id="metric-tracked">—</strong><small id="metric-totals">공개 목록 전체</small></article>
+        <article class="metric-card"><span>최근 메시지 순증</span><strong id="metric-msg-growth">—</strong><small class="comparison-time">이전 수집 대비</small></article>
+        <article class="metric-card"><span>최근 좋아요 순증</span><strong id="metric-like-growth">—</strong><small class="comparison-time">이전 수집 대비</small></article>
+        <article class="metric-card"><span>데이터 기간</span><strong id="metric-window">—</strong><small>일별 기록 (KST)</small></article>
+      </section>
+
+      <section class="panel trend-panel" aria-labelledby="trend-title">
+        <div class="panel-heading">
+          <div><p class="eyebrow">DAILY NET GROWTH</p><h2 id="trend-title">메시지 · 좋아요 일별 순증</h2></div>
+          <span class="muted">최근 30일 · 전체 합계 차이</span>
+        </div>
+        <div id="trend-chart" class="chart-pair"></div>
+      </section>
+
+      <section class="panel trend-panel" aria-labelledby="absolute-title">
+        <div class="panel-heading">
+          <div><p class="eyebrow">DAILY ABSOLUTE TOTAL</p><h2 id="absolute-title">메시지 · 좋아요 누적 절대값</h2></div>
+          <span class="muted">매일 07:00 KST 수집값</span>
+        </div>
+        <div id="absolute-chart" class="chart-pair"></div>
+      </section>
+
+      <section class="two-column">
+        <section class="panel" aria-labelledby="weekly-title">
+          <div class="panel-heading compact"><div><p class="eyebrow">WEEKLY NET GROWTH</p><h2 id="weekly-title">주별 순증</h2></div></div>
+          <div id="weekly-chart" class="chart-pair"></div>
+        </section>
+        <section class="panel" aria-labelledby="monthly-title">
+          <div class="panel-heading compact"><div><p class="eyebrow">MONTHLY NET GROWTH</p><h2 id="monthly-title">월별 순증</h2></div></div>
+          <div id="monthly-chart" class="chart-pair"></div>
+        </section>
+      </section>
+
+      <section class="panel trend-panel" aria-labelledby="model-title">
+        <div class="panel-heading">
+          <div><p class="eyebrow">TRACTION MODEL</p><h2 id="model-title">작품별 메시지 점유율 · 하루 평균 메시지</h2></div>
+          <div class="segmented" role="tablist" aria-label="모델 기준">
+            <button type="button" role="tab" class="seg active" data-model="share" aria-selected="true">점유율</button>
+            <button type="button" role="tab" class="seg" data-model="rate" aria-selected="false">하루 평균</button>
+            <button type="button" role="tab" class="seg" data-model="recent" aria-selected="false">최근 순증</button>
+          </div>
+        </div>
+        <p id="model-note" class="model-note"></p>
+        <div id="model-chart" class="hbar-list"></div>
+      </section>
+
+      <section class="panel table-panel" aria-labelledby="table-title">
+        <div class="panel-heading">
+          <div><p class="eyebrow">LATEST SNAPSHOT</p><h2 id="table-title">작품별 공개 카운터</h2></div>
+          <div class="table-tools">
+            <label for="search">검색</label>
+            <input id="search" type="search" placeholder="캐릭터명·태그" autocomplete="off" />
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr id="ranking-head">
+                <th data-sort="rank" class="sortable">순위</th>
+                <th>작품</th>
+                <th data-sort="message_count" class="sortable num">메시지</th>
+                <th data-sort="like_count" class="sortable num">좋아요</th>
+                <th data-sort="msgDelta" class="sortable num">메시지 증감</th>
+                <th data-sort="likeDelta" class="sortable num">좋아요 증감</th>
+                <th data-sort="perDay" class="sortable num">하루 평균</th>
+                <th data-sort="likeRate" class="sortable num">좋아요/1천 메시지</th>
+                <th data-sort="created" class="sortable num">등록일</th>
+              </tr>
+            </thead>
+            <tbody id="ranking-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="foot">
+        공개 목록(myteaz.io 홈)에 표시되는 캐릭터별 메시지 수·좋아요 수를 하루 한 번 읽어 저장합니다. 공개 카운터는 매출이나 실제 이용자 수와 같지 않습니다.
+      </footer>
+    </main>
+    <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+    <script src="./app.js?v=20261119" defer></script>
+  </body>
+</html>
